@@ -1,8 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {  } from '@fortawesome/free-solid-svg-icons'
 
 import { getSortedPostsData } from '../lib/posts'
 
@@ -26,7 +24,7 @@ export default function Home({ allPostsData }) {
       <main className={styles.main}>
         <h1 className={styles.title}>mcnowak.io</h1>
 
-        <p className={styles.subtitle}>
+        <p className={styles.description}>
           A place to post all my dumb projects
         </p>
 
