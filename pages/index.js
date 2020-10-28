@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
+import { TinaProvider, TinaCMS, useCMS } from 'tinacms';
 
 import { getSortedPostsData } from '../lib/posts'
 
@@ -13,20 +14,37 @@ export async function getStaticProps() {
   }
 }
 
+export function EditButton() {
+  const cms = useCMS()
+  return <button onClick={() => cms.toggle()} className={styles.button}>
+    {cms.enabled ? 'Exit edit mode' : 'Edit this site'}
+  </button>
+}
+
 export default function Home({ allPostsData }) {
   return (
     <div className={styles.container}>
       <Head>
         <title>mcnowak.io</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+        <link rel="manifest" href="/site.webmanifest"/>
+        <meta name="msapplication-TileColor" content="#da532c"/>
+        <meta name="theme-color" content="#ffffff"/>
       </Head>
 
       <main className={styles.main}>
+        <aside className={styles.menu}>
+          <img src="/android-chrome-192x192.png" className={styles.icon}/>
+        </aside>
         <h1 className={styles.title}>mcnowak.io</h1>
 
         <p className={styles.description}>
           A place to post all my dumb projects
         </p>
+
+        <EditButton></EditButton>
 
           <section>
           <h2 className={styles.heading}>Posts</h2>
