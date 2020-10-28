@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import { TinaProvider, TinaCMS, useCMS } from 'tinacms';
+import { TinaProvider, TinaCMS } from 'tinacms';
+import TinaCMSEditButton from '../components/TinaCMSEditButton'
 
 import { getSortedPostsData } from '../lib/posts'
 
@@ -12,13 +13,6 @@ export async function getStaticProps() {
       allPostsData
     }
   }
-}
-
-export function EditButton() {
-  const cms = useCMS()
-  return <button onClick={() => cms.toggle()} className={styles.button}>
-    {cms.enabled ? 'Exit edit mode' : 'Edit this site'}
-  </button>
 }
 
 export default function Home({ allPostsData }) {
@@ -44,13 +38,11 @@ export default function Home({ allPostsData }) {
           A place to post all my dumb projects
         </p>
 
-        <EditButton></EditButton>
-
-          <section>
+        <section>
           <h2 className={styles.heading}>Posts</h2>
           <div className={styles.grid}>
             {allPostsData.map(({ id, date, title }) => (
-              <Link href={`/posts/${encodeURIComponent(id)}`}>
+              <Link href={`/posts/${encodeURIComponent(id)}`} key={id}>
                 <div className={styles.card} key={id}>
                   <h3>{title}</h3>
                   <p>{date}</p>
