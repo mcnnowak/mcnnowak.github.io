@@ -2,7 +2,7 @@ import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
 const glob = require('glob')
 
-import Layout from '../../components/Layout'
+import Layout from '../../components/layout'
 
 export default function BlogTemplate({ frontmatter, markdownBody, siteTitle }) {
   function reformatDate(fullDate) {
@@ -174,12 +174,11 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle }) {
 export async function getStaticProps({ ...ctx }) {
   const { slug } = ctx.params
   const content = await import(`../../posts/${slug}.md`)
-  const config = await import(`../../data/config.json`)
   const data = matter(content.default)
 
   return {
     props: {
-      siteTitle: config.title,
+      siteTitle: 'Title of the blog page',
       frontmatter: data.data,
       markdownBody: data.content,
     },
