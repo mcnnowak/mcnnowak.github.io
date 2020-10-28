@@ -1,18 +1,46 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import { getSortedPostsData } from '../lib/posts'
+import BlogList from '../components/BlogList'
+import matter from 'gray-matter';
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
+  const siteConfig = await import(`../data/config.json`)
+
+  //get posts & context from folder
+  const posts = (context => {
+    const keys = context.keys()
+    const values = keys.map(context)
+
+    const data = keys.map((key, index) => {
+      // Create slug from filename
+      const slug = key
+        .replace(/^.*[\\\/]/, '')
+        .split('.')
+        .slice(0, -1)
+        .join('.')
+      const value = values[index]
+      // Parse yaml metadata & markdownbody in document
+      const document = matter(value.default)
+      return {
+        frontmatter: document.data,
+        markdownBody: document.content,
+        slug,
+      }
+    })
+    return data
+  })(require.context('../posts', true, /\.md$/))
+
   return {
     props: {
-      allPostsData
-    }
+      allBlogs: posts,
+      title: siteConfig.default.title,
+      description: siteConfig.default.description,
+    },
   }
 }
 
-export default function Home({ allPostsData }) {
+export default function Home({allBlogs, title, description}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -29,24 +57,13 @@ export default function Home({ allPostsData }) {
         <aside className={styles.menu}>
           <img src="/android-chrome-192x192.png" className={styles.icon}/>
         </aside>
-        <h1 className={styles.title}>mcnowak.io</h1>
 
-        <p className={styles.description}>
-          A place to post all my dumb projects
-        </p>
+        <h1 className={styles.title}>{ title }</h1>
+        <p className={styles.description}>{ description }</p>
 
         <section>
           <h2 className={styles.heading}>Posts</h2>
-          <div className={styles.grid}>
-            {allPostsData.map(({ id, date, title }) => (
-              <Link href={`/posts/${encodeURIComponent(id)}`} key={id}>
-                <div className={styles.card} key={id}>
-                  <h3>{title}</h3>
-                  <p>{date}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <BlogList allBlogs={allBlogs}></BlogList>
         </section>
       </main>
 
