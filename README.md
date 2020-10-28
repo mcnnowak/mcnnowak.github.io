@@ -3,7 +3,7 @@
 # mcnowak.io
 
 ## Who is Michael Nowak?
-Hi! I'm Michael Nowak, and I decided that it's probably time for me to build and deploy a personal website.
+Hi! I'm Michael Nowak, and I decided that it's probably time for me to build a personal website.
 
 ## Tools used
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Next.js is the nicest front end framework I've used.
