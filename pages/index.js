@@ -24,11 +24,9 @@ export default function Home({ allPostsData }) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          mcnowak.io
-        </h1>
+        <h1 className={styles.title}>mcnowak.io</h1>
 
-        <p className={styles.description}>
+        <p className={styles.subtitle}>
           A place to post all my dumb projects
         </p>
 
