@@ -1,67 +1,56 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {  } from '@fortawesome/free-solid-svg-icons'
 
-export default function Home() {
+import { getSortedPostsData } from '../lib/posts'
+
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData()
+  return {
+    props: {
+      allPostsData
+    }
+  }
+}
+
+export default function Home({ allPostsData }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>mcnowak.io</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          What is <a href="https://nextjs.org">Next.js?</a>
+          mcnowak.io
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          A place to post all my dumb projects
         </p>
 
-        <div className={styles.grid}>
-          <Link href="/posts/post">
-            <a className={styles.card}>
-              <h3>First post &rarr;</h3>
-              <p>The first post that I wrote on this Next.js blog.</p>
-            </a>
-          </Link>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+          <section>
+          <h2 className={styles.heading}>Posts</h2>
+          <div className={styles.grid}>
+            {allPostsData.map(({ id, date, title }) => (
+              <Link href={`/posts/${encodeURIComponent(id)}`}>
+                <div className={styles.card} key={id}>
+                  <h3>{title}</h3>
+                  <p>{date}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
       </main>
 
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
+        <Link href="https://github.com/mcnnowak">
+          github.com/mcnnowak
+        </Link>
       </footer>
     </div>
   )

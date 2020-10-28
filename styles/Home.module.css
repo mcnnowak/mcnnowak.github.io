@@ -52,7 +52,13 @@
   font-size: 4rem;
 }
 
+.heading {
+  margin: 20;
+  font-size: 2rem;
+}
+
 .title,
+.heading,
 .description {
   text-align: center;
 }
