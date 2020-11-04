@@ -26,6 +26,7 @@
     "moment": "^2.29.1",
     "next": "10.0.0",
     "next-tinacms-github": "^0.32.0",
+    "next-tinacms-markdown": "^0.32.0",
     "node-fetch": "2.6.1",
     "path": "^0.12.7",
     "raw-loader": "^4.0.2",

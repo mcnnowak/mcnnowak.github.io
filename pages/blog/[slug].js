@@ -4,7 +4,6 @@ import ReactMarkdown from 'react-markdown'
 import Layout from '../../components/Layout'
 
 export default function BlogTemplate(props) {
-  // Render data from `getStaticProps`
   return (
     <Layout siteTitle={props.siteTitle}>
       <article>

@@ -1,0 +1,30 @@
+.navigation {
+  display: flex;
+  flex-flow: row;
+  min-height: 10vh;
+}
+
+.logo {
+  height: 2em;
+  order: 0;
+}
+
+.menu {
+  align-items: center;
+  flex-wrap: nowrap;
+  display: flex;
+  list-style: none;
+}
+
+.item {
+  position: relative;
+  margin: 0 auto;
+}
+
+.submenu {
+ display: block;
+}
+
+.item a {
+  padding: 10px 15px;
+}
