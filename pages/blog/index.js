@@ -6,16 +6,16 @@ export async function getStaticProps() {
   const posts = await getAllBlogPosts()
   return {
     props: {
-      allBlogs: posts,
+      posts: posts,
       title: 'Blog'
     },
   }
 }
 
-export default function Blog({allBlogs, title}) {
+export default function Blog({posts, title}) {
   return <>
     <Head><title>{title}</title></Head>
     <h1>Blog</h1>
-    <BlogList allBlogs={allBlogs}></BlogList>
+    <BlogList posts={posts}></BlogList>
   </>
 }

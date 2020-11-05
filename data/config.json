@@ -1,4 +1,16 @@
 {
   "title": "mcnowak.io",
-  "description": "A place to post all my dumb projects"
+  "description": "Michael Nowak's personal website",
+  "projects": [
+    {
+      "title": "mcnowak.io",
+      "link": "https://github.com/mcnnowak/mcnowak.io",
+      "description": "This website! A NextJS app deployed with Netlify using TinaCMS."
+    },
+    {
+      "title": "GitHub Game Off 2020 Entry",
+      "link": "https://github.com/mcnnowak/super-moon-asteroid-railgun-track-3000",
+      "description": "A 2D Godot game I'm building as an entry to the GitHub Game off 2020."
+    }
+  ]
 }

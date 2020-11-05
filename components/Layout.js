@@ -11,7 +11,7 @@ export default function Layout({ children }) {
       </main>
       <footer className={styles.footer}>
         <Link href="https://github.com/mcnnowak">
-          github.com/mcnnowak
+            github.com/mcnnowak
         </Link>
       </footer>
     </div>
