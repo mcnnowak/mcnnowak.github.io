@@ -4,16 +4,12 @@ import ReactMarkdown from 'react-markdown'
 import Layout from '../../components/Layout'
 
 export default function BlogTemplate(props) {
-  return (
-    <Layout siteTitle={props.siteTitle}>
-      <article>
+  return <article>
         <h1>{props.frontmatter.title}</h1>
         <div>
           <ReactMarkdown source={props.markdownBody} />
         </div>
       </article>
-    </Layout>
-  )
 }
 
 export async function getStaticProps({ ...ctx }) {
