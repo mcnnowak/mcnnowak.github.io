@@ -1,9 +1,8 @@
 ---
 title: How I deployed this site in a couple hours for (almost) free
-description: 'This is the subtitle'
+description: 'Or: Why Netlify is super cool'
 author: Michael Nowak
 date: '2020-10-27'
-hero_image: ../static/bali-15.jpg
 ---
 
 I deployed this site in about four hours. I cheated, I cut corners, I used a bunch of free tools and templates. And this is exactly what I needed.

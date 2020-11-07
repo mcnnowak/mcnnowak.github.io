@@ -5,7 +5,7 @@ function getProjectList(projects) {
   return <ul className={styles.projectList}>
     {
       projects.map((project) => {
-        return <li className={styles.projectItem}>
+        return <li  key={project.title} className={styles.projectItem}>
           <Link href={project.link}>
             <div>
               <h3 className={styles.projectName}>{project.title}</h3>
